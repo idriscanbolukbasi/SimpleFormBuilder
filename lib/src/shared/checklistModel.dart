@@ -75,6 +75,7 @@ class Questions {
   int? maxline;
   bool? isMandatory;
   var answer;
+  var correctAnswer; // for client-side validation
 
   Questions({
     this.fields,
@@ -85,6 +86,7 @@ class Questions {
     this.type,
     this.maxline,
     this.isMandatory,
+    this.correctAnswer,
   });
 
   Questions.fromJson(Map<String, dynamic> json) {
@@ -99,6 +101,7 @@ class Questions {
     if (type == "checkbox") {
       answer = List.generate(fields!.length, (index) => false);
     }
+    correctAnswer = json["correct_answer"];
   }
 
   Map<String, dynamic> toJson() {
@@ -113,7 +116,7 @@ class Questions {
     data['is_mandatory'] = this.isMandatory;
     data["maxline"] = this.maxline;
     data["answer"] = this.answer.toString();
-
+    data["correct_answer"] = this.correctAnswer.toString();
     return data;
   }
 }

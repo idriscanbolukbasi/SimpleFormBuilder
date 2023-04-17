@@ -5,6 +5,7 @@ import 'package:simple_form_builder/src/screens/form_builder/provider/form_build
 import 'package:simple_form_builder/src/screens/form_builder/widgets/custom_dropdown.dart';
 import 'package:simple_form_builder/src/screens/form_builder/widgets/description_widget.dart';
 import 'package:simple_form_builder/src/screens/form_builder/widgets/simple_icon_container.dart';
+import 'package:simple_form_builder/src/screens/form_builder/widgets/style/dropdown_decoration.dart';
 
 import 'package:simple_form_builder/src/shared/checklistModel.dart';
 import 'package:simple_form_builder/src/shared/constant.dart';
@@ -59,6 +60,8 @@ class QuestionWidget extends StatelessWidget {
           checklistModel: checklistModel,
           dropdownImage: widget.dropdownImage,
           descriptionTextDecoration: widget.descriptionTextDecoration,
+          dropdownDecoration: widget
+              .dropdownDecoration, // pass the dropdownDecoration from the FormBuilder widget to styling the dropdown
         );
       case "checkbox":
         return _SimpleCheckbox(

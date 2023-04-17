@@ -14,15 +14,25 @@ class MyApp extends StatelessWidget {
       title: 'FormBuilder Example',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          title: const Text('Material App Bar'),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
               FormBuilder(
+                dropdownDecoration: DropdownDecoration(
+                  // styling the dropdown
+                  width: 0.4,
+                  icon: Icons.arrow_drop_down,
+                  showInRow: true,
+                  iconColor: Colors.green,
+                  itemHeight: 50,
+                  underline: Container(height: 2, color: Colors.green),
+                  decoration: const BoxDecoration(),
+                ),
                 initialData: sampleData,
                 title: "Form title",
-                titleStyle: TextStyle(
+                titleStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
                 ),
@@ -30,18 +40,19 @@ class MyApp extends StatelessWidget {
                 widgetCrossAxisAlignment: CrossAxisAlignment.center,
                 index: 0,
                 showIndex: false,
-                descriptionTextDecoration: TextStyle(color: Colors.red),
+                descriptionTextDecoration: const TextStyle(color: Colors.red),
                 submitButtonWidth: 1,
-                submitButtonDecoration: BoxDecoration(
+                submitButtonDecoration: const BoxDecoration(
                   color: Colors.blue,
                 ),
                 showIcon: false,
-                onSubmit: (ChecklistModel val) {
+                onSubmit: (ChecklistModel? val) {
+                  // null-check
                   if (val == null) {
-                    print("no data");
+                    debugPrint("no data");
                   } else {
                     var json = jsonEncode(val.toJson());
-                    print(json);
+                    debugPrint(json);
                   }
                 },
               ),
